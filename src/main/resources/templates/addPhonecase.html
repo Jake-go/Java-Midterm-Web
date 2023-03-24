@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a New Phonecase</title>
+</head>
+
+<body>
+
+    <h1>Add a Phone Case</h1>
+    <br>
+    <h2><a th:href="@{/}">Landing Page</a></h2>
+    <h2><a th:href="@{/police}">Police</a></h2>
+    <h2><a th:href="@{/phonecase}">Phonecases</a></h2>
+
+    <br>
+
+
+    <form th:action="@{/processAddPhonecase}" th:object="${phonecase}">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="price">Price:</label>
+        <input type="number" step="0.01" id="price" name="price"><br><br>
+        <label for="quantity">Quantity:</label>
+        <input type="text" id="quantity" name="quantity"><br><br>
+        <label for="employeeName">Employee Name:</label>
+        <select id="employeeName" name="employeeName">
+            <option th:each="police : ${polices}" th:value="${police.name}" th:text="${police.name}"></option>
+        </select><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+
+</html>

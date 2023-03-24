@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Phonecases</title>
+</head>
+
+<body>
+
+    <h1>Phone Cases</h1>
+    <br>
+    <h2><a th:href="@{/}">Landing Page</a></h2>
+    <h2><a th:href="@{/police}">Police</a></h2>
+    <h2><a th:href="@{/addPhonecase}">Add a new phonecase</a></h2>
+
+    <br>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Phonecase ID</th>
+                <th>Phonecase Name</th>
+                <th>Phonecase Price</th>
+                <th>Phonecase Quantity</th>
+                <th>Employee Name</th>
+                <th>Purchase</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="phonecase : ${phonecases}">
+                <td th:text="${phonecase.id}"></td>
+                <td th:text="${phonecase.name}"></td>
+                <td th:text="${phonecase.price}"></td>
+                <td th:text="${phonecase.quantity}"></td>
+                <td th:text="${phonecase.employeeName}"></td>
+                <td><span th:if="${phonecase.quantity > 0}">
+                        <a th:href="@{/purchasePhonecase/{id}(id=${phonecase.id})}">Purchase</a>
+                    </span>
+                    <span th:if="${phonecase.quantity == 0}">
+                        Sold out
+                    </span>
+                </td>
+                <td><a th:href="@{/deletePhonecase/{id}(id=${phonecase.id})}">Delete</a></td>
+            </tr>
+        </tbody>
+
+
+</body>
+
+</html>
